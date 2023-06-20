@@ -1,19 +1,16 @@
-
 export async function generateToken() {
   try {
-    const response = await fetch(`http://localhost:3000/generate-token`, {
+    const response = await fetch(`http://localhost:5000/generate-token`, {
       method: "POST",
       headers: {
         Accept: "application/json",
       },
-    })
+    });
     const data = await response.json();
-    // console.log("data: ", data.token);
     return data.token;
-
   } catch (e) {
-    console.error('Token generation failed: ', e);
-    throw new Error('Token generation failed!');
+    console.error("Token generation failed: ", e);
+    throw new Error("Token generation failed!");
   }
 }
 

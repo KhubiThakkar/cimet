@@ -1,5 +1,5 @@
 const express = require("express");
-const process = require("process");
+require('dotenv').config()
 const axios = require("axios");
 const app = express();
 
@@ -16,7 +16,6 @@ app.post("/generate-token", async (req, res) => {
   try {
     const endpoint = "https://devcore02.cimet.io/v1/generate-token";
     const apiKey = process.env.apiKey;
-
     const response = await axios.post(
       endpoint,
       {},
@@ -27,7 +26,6 @@ app.post("/generate-token", async (req, res) => {
       }
     );
     const token = response.data.data.token;
-    console.log("token: ", token);
     res.json({ token });
   } catch (error) {
     console.error("Token generation failed:", error.message);
@@ -36,7 +34,7 @@ app.post("/generate-token", async (req, res) => {
 });
 
 // Start the server
-const port = 3000; // Replace with your desired port number
+const port = 5000; // Replace with your desired port number
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
