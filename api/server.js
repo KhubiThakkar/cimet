@@ -27,6 +27,7 @@ app.post("/generate-token", async (req, res) => {
       }
     );
     const token = response.data.data.token;
+    console.log("token: ", token);
     res.json({ token });
   } catch (error) {
     console.error("Token generation failed:", error.message);
